@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "hello-world-server"
+version = "0.1.0"
+description = "A simple fastapi hello world server"
+authors = ["Your Name <you@example.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+packages = [{include = "hello_world_server"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.92.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -174,7 +174,7 @@ func (m *Poetry) PushRootModuleToVenv() (bool, error) {
 	return false, nil
 }
 
-func (m *Poetry) markRootModue() {
+func (m *Poetry) markRootModule() {
 	for i, pkg := range m.pkgs {
 		if worker.IsRootModule(pkg, m.metadata.Slug) {
 			m.pkgs[i].Root = true
@@ -197,7 +197,7 @@ func (m *Poetry) LoadModuleList(path string) error {
 	result, err := m.command.Output()
 	if err == nil && len(result) > 0 && worker.IsRequirementMeet(result) {
 		m.pkgs = worker.LoadModules(result, m.version)
-		m.markRootModue()
+		m.markRootModule()
 	}
 
 	return err

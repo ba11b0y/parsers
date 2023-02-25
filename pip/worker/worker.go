@@ -127,17 +127,17 @@ func IsRootModule(pkg Packages, pipType string) bool {
 	pipenv := "pipenv"
 	poetry := "poetry"
 	pyenv := "pyenv"
-	os := runtime.GOOS
+	osName := runtime.GOOS
 	switch {
-	case os == osWin && (pipType == pipenv || pipType == pyenv):
+	case osName == osWin && (pipType == pipenv || pipType == pyenv):
 		if !strings.Contains(pkg.Location, "\\src\\") && !strings.Contains(pkg.Location, "\\site-packages") {
 			return true
 		}
-	case (os == osDarwin || os == osLinux) && (pipType == pipenv || pipType == pyenv):
+	case (osName == osDarwin || osName == osLinux) && (pipType == pipenv || pipType == pyenv):
 		if !strings.Contains(pkg.Location, "/src/") && !strings.Contains(pkg.Location, "/site-packages") {
 			return true
 		}
-	case (os == osWin || os == osLinux || os == osDarwin) && pipType == poetry:
+	case (osName == osWin || osName == osLinux || osName == osDarwin) && pipType == poetry:
 		if pkg.Installer == poetry {
 			return true
 		}
